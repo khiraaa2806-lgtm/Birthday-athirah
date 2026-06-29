@@ -69,29 +69,34 @@ transform:scale(1.05);
 display:none;
 margin-top:30px;
 padding:20px;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.45);
 border-radius:15px;
 backdrop-filter:blur(8px);
 }
 
-/* 🖼️ SLIDE IMAGE */
+/* 🖼️ IMAGE SLIDE */
 .img-slide{
 display:flex;
 justify-content:center;
+align-items:center;
 margin-bottom:15px;
 }
 
 .img-slide img{
-width:140px;
-height:140px;
+width:160px;
+height:160px;
 
-object-fit:cover;       /* 🔥 penting supaya muka tak stretch */
-object-position:center; /* 🔥 focus tengah muka */
+/* 🔥 IMPORTANT PART (FACE CENTER FIX) */
+object-fit:cover;
+object-position:center center;
 
-border-radius:20px;
-border:2px solid rgba(255,255,255,0.4);
-box-shadow:0 0 15px rgba(255,255,255,0.2);
-transition:0.5s ease;
+border-radius:22px;
+border:2px solid rgba(255,255,255,0.5);
+box-shadow:0 0 20px rgba(255,255,255,0.25);
+
+/* smooth fade */
+transition:0.8s ease;
+opacity:1;
 }
 
 /* ✍️ TEXT */
@@ -174,9 +179,18 @@ let index = 0;
 
 function startSlideshow(){
 setInterval(()=>{
-document.getElementById("slideImage").src = images[index];
+let img = document.getElementById("slideImage");
+
+/* fade effect */
+img.style.opacity = 0;
+
+setTimeout(()=>{
+img.src = images[index];
+img.style.opacity = 1;
 index = (index + 1) % images.length;
-}, 2500);
+},300);
+
+},2500);
 }
 
 function start(){
