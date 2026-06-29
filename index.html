@@ -78,7 +78,6 @@ backdrop-filter:blur(8px);
 .img-slide{
 display:flex;
 justify-content:center;
-align-items:center;
 margin-bottom:15px;
 }
 
@@ -86,15 +85,15 @@ margin-bottom:15px;
 width:160px;
 height:160px;
 
-/* 🔥 IMPORTANT PART (FACE CENTER FIX) */
+/* 🔥 FACE FIX (IMPORTANT PART) */
 object-fit:cover;
-object-position:center center;
+
+/* 👉 BETULKAN MUKA (NO DADA, NO CUT KEPALA) */
+object-position:50% 12%;
 
 border-radius:22px;
 border:2px solid rgba(255,255,255,0.5);
 box-shadow:0 0 20px rgba(255,255,255,0.25);
-
-/* smooth fade */
 transition:0.8s ease;
 opacity:1;
 }
@@ -181,7 +180,6 @@ function startSlideshow(){
 setInterval(()=>{
 let img = document.getElementById("slideImage");
 
-/* fade effect */
 img.style.opacity = 0;
 
 setTimeout(()=>{
