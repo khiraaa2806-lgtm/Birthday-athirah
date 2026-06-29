@@ -210,9 +210,10 @@ function start(){
 
 document.getElementById("box").style.display="block";
 
+/* slideshow */
 startSlideshow();
 
-/* 🎵 MUSIC */
+/* music */
 let audio = document.getElementById("music");
 audio.volume = 0;
 audio.play().catch(()=>{});
@@ -227,7 +228,7 @@ clearInterval(fade);
 }
 },200);
 
-/* ✍️ TYPE TEXT */
+/* text */
 let i = 0;
 let box = document.getElementById("text");
 
