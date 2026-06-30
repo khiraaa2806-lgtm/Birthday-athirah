@@ -48,7 +48,7 @@ margin-bottom:20px;
 font-size:34px;
 }
 
-/* 🎁 GIFT */
+/* GIFT */
 #gift{
 display:flex;
 flex-direction:column;
@@ -104,7 +104,6 @@ margin-bottom:15px;
 width:220px;
 height:280px;
 object-fit:cover;
-object-position:center;
 border-radius:20px;
 border:3px solid rgba(255,255,255,0.4);
 box-shadow:0 0 20px rgba(255,255,255,0.2);
@@ -140,7 +139,6 @@ text-align:center;
 
 <h1>Happy Birthday Thirah 🎂</h1>
 
-<!-- 🎁 GIFT -->
 <div id="gift">
   <div class="box-gift">🎁</div>
   <p>Tap the gift to open</p>
@@ -164,7 +162,7 @@ text-align:center;
 
 <script>
 
-window.onload = function(){
+document.addEventListener("DOMContentLoaded", () => {
 
 const message = `
 Happy Birthday Thirahhhh 🫶🏻
@@ -173,25 +171,25 @@ Semoga panjang umur dan dimurahkan rezeki 🥰
 
 Kau dah tua dah sekarang ehhh 🤣 HAHAHA gurau je
 
-Terima kasih sebab masih ada dalam dunia ni walaupun banyak benda yang kau hadap, and I know it's not easy sometimes 🥺
+Terima kasih sebab masih ada dalam dunia ni walaupun banyak benda yang kau hadap 🥺
 
 Tapi kau kena ingat, kau tak keseorangan 🫶🏻 I still ada kalau kau perlukan someone to talk to
 
-Thank you sebab sudi jadi kawan I walaupun I banyak karenah dan kadang-kadang menyusahkan 😭 Tapi kau still stay 🥹 I really appreciate that
+Thank you sebab sudi jadi kawan I 😭🥹
 
-I hope kau dapat jodoh yang baik, yang boleh jaga kau dan layan perangai kau macam mana I layan kau (tapi versi lebih sabar 😂)
+I hope kau dapat jodoh yang baik 😂
 
-And I hope kita boleh jadi kawan sampai bila-bila 🫶🏻
+And I hope kita jadi kawan sampai bila-bila 🫶🏻
 
-Take care of yourself always okay 🤍
+Take care always 🤍
 `;
 
 const images = [
-  { src: "img1.jpg", pos: "50% 12%" },
-  { src: "img2.jpg", pos: "50% 12%" },
-  { src: "img3.jpg", pos: "50% 13%" },
-  { src: "img4.jpg", pos: "50% 12%" },
-  { src: "img5.jpg", pos: "50% 11%" }
+  "img1.jpg",
+  "img2.jpg",
+  "img3.jpg",
+  "img4.jpg",
+  "img5.jpg"
 ];
 
 let index = 0;
@@ -208,7 +206,6 @@ function startAll(){
 
 gift.style.display="none";
 btn.style.display="none";
-
 content.style.display="block";
 
 /* music */
@@ -227,17 +224,16 @@ typeText();
 
 }
 
-/* CLICK EVENTS */
-gift.addEventListener("click",startAll);
-btn.addEventListener("click",startAll);
+/* EVENTS SAFE */
+gift.addEventListener("click", startAll);
+btn.addEventListener("click", startAll);
 
 /* SLIDESHOW */
 function showImage(){
 img.style.opacity = 0;
 
 setTimeout(()=>{
-img.src = images[index].src;
-img.style.objectPosition = images[index].pos;
+img.src = images[index];
 img.style.opacity = 1;
 
 index = (index + 1) % images.length;
@@ -249,7 +245,7 @@ showImage();
 setInterval(showImage,2500);
 }
 
-/* TYPE TEXT */
+/* TYPE EFFECT */
 function typeText(){
 let i = 0;
 
@@ -266,7 +262,7 @@ finalBox.style.display="block";
 typing();
 }
 
-};
+});
 
 </script>
 
