@@ -48,21 +48,7 @@ margin-bottom:20px;
 font-size:34px;
 }
 
-button{
-padding:15px 35px;
-border:none;
-border-radius:50px;
-background:#ff4d6d;
-color:white;
-font-size:17px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
+/* 🎁 GIFT */
 #gift{
 display:flex;
 flex-direction:column;
@@ -85,6 +71,22 @@ animation:float 1.5s infinite ease-in-out;
 #gift p{
 margin-top:10px;
 opacity:0.8;
+}
+
+/* BUTTON */
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:#ff4d6d;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 #content{
@@ -138,6 +140,7 @@ text-align:center;
 
 <h1>Happy Birthday Thirah 🎂</h1>
 
+<!-- 🎁 GIFT -->
 <div id="gift">
   <div class="box-gift">🎁</div>
   <p>Tap the gift to open</p>
@@ -160,6 +163,8 @@ text-align:center;
 </div>
 
 <script>
+
+window.onload = function(){
 
 const message = `
 Happy Birthday Thirahhhh 🫶🏻
@@ -191,6 +196,7 @@ const images = [
 
 let index = 0;
 
+const gift = document.getElementById("gift");
 const btn = document.getElementById("openBtn");
 const content = document.getElementById("content");
 const textBox = document.getElementById("text");
@@ -198,12 +204,10 @@ const finalBox = document.getElementById("final");
 const img = document.getElementById("slideImage");
 const audio = document.getElementById("music");
 
-const gift = document.getElementById("gift");
-const btn = document.getElementById("openBtn");
+function startAll(){
 
-gift.addEventListener("click",()=>{
-  gift.style.display="none";
-  btn.style.display="none";
+gift.style.display="none";
+btn.style.display="none";
 
 content.style.display="block";
 
@@ -218,12 +222,16 @@ audio.volume = v;
 if(v >= 1) clearInterval(fade);
 },200);
 
-/* start */
 startSlideshow();
 typeText();
 
-});
+}
 
+/* CLICK EVENTS */
+gift.addEventListener("click",startAll);
+btn.addEventListener("click",startAll);
+
+/* SLIDESHOW */
 function showImage(){
 img.style.opacity = 0;
 
@@ -241,6 +249,7 @@ showImage();
 setInterval(showImage,2500);
 }
 
+/* TYPE TEXT */
 function typeText(){
 let i = 0;
 
@@ -250,30 +259,14 @@ textBox.textContent += message.charAt(i);
 i++;
 setTimeout(typing,25);
 }else{
-finalBox.style.display = "block";
+finalBox.style.display="block";
 }
 }
 
 typing();
 }
 
-btn.addEventListener("click",()=>{
-btn.style.display="none";
-content.style.display="block";
-
-audio.volume = 0;
-audio.play().catch(()=>{});
-
-let v = 0;
-let fade = setInterval(()=>{
-v += 0.05;
-audio.volume = v;
-if(v >= 1) clearInterval(fade);
-},200);
-
-startSlideshow();
-typeText();
-});
+};
 
 </script>
 
