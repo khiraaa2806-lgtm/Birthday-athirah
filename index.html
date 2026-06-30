@@ -63,6 +63,30 @@ button:hover{
 transform:scale(1.05);
 }
 
+#gift{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+.box-gift{
+font-size:70px;
+animation:float 1.5s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+#gift p{
+margin-top:10px;
+opacity:0.8;
+}
+
 #content{
 display:none;
 margin-top:20px;
@@ -113,6 +137,11 @@ text-align:center;
 <div class="container">
 
 <h1>Happy Birthday Thirah 🎂</h1>
+
+<div id="gift">
+  <div class="box-gift">🎁</div>
+  <p>Tap the gift to open</p>
+</div>
 
 <button id="openBtn">Open Message 🤍</button>
 
@@ -168,6 +197,32 @@ const textBox = document.getElementById("text");
 const finalBox = document.getElementById("final");
 const img = document.getElementById("slideImage");
 const audio = document.getElementById("music");
+
+const gift = document.getElementById("gift");
+const btn = document.getElementById("openBtn");
+
+gift.addEventListener("click",()=>{
+  gift.style.display="none";
+  btn.style.display="none";
+
+content.style.display="block";
+
+/* music */
+audio.volume = 0;
+audio.play().catch(()=>{});
+
+let v = 0;
+let fade = setInterval(()=>{
+v += 0.05;
+audio.volume = v;
+if(v >= 1) clearInterval(fade);
+},200);
+
+/* start */
+startSlideshow();
+typeText();
+
+});
 
 function showImage(){
 img.style.opacity = 0;
